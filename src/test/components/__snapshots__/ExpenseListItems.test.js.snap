@@ -7,7 +7,9 @@ exports[`should render ExpenseListItems correctly 1`] = `
     to="/edit/undefined"
   />
   <p>
+    $0.00
      - 
+    January 1st, 1970
   </p>
 </div>
 `;
