@@ -1,6 +1,4 @@
-const getExpensesTotal = (expenses)=>{
-    if(!expenses || expenses.length === 0) return 0;
-
+const getExpensesTotal = (expenses = [])=>{
     return expenses.reduce((acc, item)=>{
         return acc += item.amount; 
     }, 0)
