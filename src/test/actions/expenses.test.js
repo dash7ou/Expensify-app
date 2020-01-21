@@ -23,6 +23,7 @@ test("should setup update expense action object",()=>{
 
 test("should setup add expense with provided values", ()=>{
     const newData = {
+        id: "1",
         description: "morad is here bitch",
         amount: 10,
         note:"noor is good girl",
@@ -32,23 +33,23 @@ test("should setup add expense with provided values", ()=>{
     const action = addExpense(newData);
     expect(action).toEqual({
         type: 'ADD_EXPENSE',
-        expense:{
-            ...newData,
-            id: expect.any(String)
-        }   
+        expense: newData 
     })
 })
 
-test("should setup add expense with the default values",()=>{
-    const action = addExpense();
-    expect(action).toEqual({
-        type:'ADD_EXPENSE',
-        expense:{
-            description: '',
-            amount:0,
-            createdAt: 0,
-            note:'',
-            id: expect.any(String)
-        }
-    })
-})
+
+
+
+// test("should setup add expense with the default values",()=>{
+//     const action = addExpense();
+//     expect(action).toEqual({
+//         type:'ADD_EXPENSE',
+//         expense:{
+//             description: '',
+//             amount:0,
+//             createdAt: 0,
+//             note:'',
+//             id: expect.any(String)
+//         }
+//     })
+// })
