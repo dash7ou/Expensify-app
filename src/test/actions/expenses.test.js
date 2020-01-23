@@ -68,6 +68,32 @@ test("should add expense to database and store", (done)=>{
     })
 });
 
+test("should add expense with default to database and store it", (done)=>{
+    const store = createMockStore({});
+    const data = {
+        description: "",
+        amount: 0,
+        note:"",
+        createdAt: 0
+    }
+
+    store.dispatch(startAddExpense({})).then(()=>{
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'ADD_EXPENSE',
+            expense: {
+                id: expect.any(String),
+                ...data
+            }
+        })
+
+        return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+    }).then((snapshout)=>{
+        expect(snapshout.val()).toEqual(data)
+        done();
+    })
+})
+
 
 
 
