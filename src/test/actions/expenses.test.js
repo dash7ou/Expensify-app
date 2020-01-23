@@ -1,4 +1,8 @@
-import {addExpense , removeExpense, editExpense} from "../../actions/expenses";
+import configMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import {startAddExpense , addExpense , removeExpense, editExpense} from "../../actions/expenses";
+
+const createMockStore = configMockStore([thunk]);
 
 test("should setup remove expense action object", ()=>{
     const action  =removeExpense({id: "123"});
@@ -35,6 +39,25 @@ test("should setup add expense with provided values", ()=>{
         type: 'ADD_EXPENSE',
         expense: newData 
     })
+});
+
+test("should add expense to database and store", (done)=>{
+    const store = createMockStore({});
+    const data = {
+        description: "morad is here bitch",
+        amount: 10,
+        note:"noor is good girl",
+        createdAt: 1000
+    }
+
+    store.dispatch(startAddExpense(data)).then(()=>{
+        expect(2).toBe(2)
+        done();
+    })
+});
+
+test("should add expense with default to database and store it", ()=>{
+
 })
 
 
