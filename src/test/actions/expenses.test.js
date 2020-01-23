@@ -1,6 +1,7 @@
 import configMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import {startAddExpense , addExpense , removeExpense, editExpense} from "../../actions/expenses";
+import database from "../../firebase/firebase";
 
 const createMockStore = configMockStore([thunk]);
 
@@ -51,14 +52,22 @@ test("should add expense to database and store", (done)=>{
     }
 
     store.dispatch(startAddExpense(data)).then(()=>{
-        expect(2).toBe(2)
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'ADD_EXPENSE',
+            expense:{
+                id: expect.any(String),
+                ...data
+            }
+        })
+
+        return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+    }).then((snapshout)=>{
+        expect(snapshout.val()).toEqual(data)
         done();
     })
 });
 
-test("should add expense with default to database and store it", ()=>{
-
-})
 
 
 
