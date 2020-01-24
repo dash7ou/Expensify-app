@@ -34,3 +34,11 @@ export const editExpense = (id , newData)=>({
     id,
     newData
 })
+
+
+// SET_EXPENSES
+
+export const setExpenses = (expenses)=>({
+    type: 'SET_EXPENSES',
+    expenses
+})
