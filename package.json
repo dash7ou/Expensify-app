@@ -9,7 +9,7 @@
     "yarn": "1.21.1"
   },
   "scripts": {
-    "build:dev": "webpack --env development",
+    "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "cross-env": "5.0.5",
+    "dotenv": "4.0.0",
     "enzyme": "3.0.0",
     "enzyme-to-json": "3.0.1",
     "jest": "20.0.4",
