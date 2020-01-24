@@ -1,6 +1,6 @@
 import configMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import {startAddExpense , addExpense , removeExpense, editExpense, setExpenses ,startSetExpenses} from "../../actions/expenses";
+import {startAddExpense , addExpense , removeExpense, editExpense, setExpenses ,startSetExpenses, startRemoveExpense} from "../../actions/expenses";
 import database from "../../firebase/firebase";
 import moment from "moment";
 
@@ -49,6 +49,20 @@ test("should setup remove expense action object", ()=>{
     })
 })
 
+test("should delete expense from firebase", (done)=>{
+    const store = createMockStore({});
+    store.dispatch(startRemoveExpense(expenses[0])).then(()=>{
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            id: expenses[0].id
+        })
+        return database.ref(`expenses/${expenses[0].id}`).once('value');
+    }).then(snapshout=>{ 
+        expect(snapshout.val()).toBeFalsy();
+        done();
+    })
+})
 
 test("should setup update expense action object",()=>{
     const newData = {description: "morad"}
@@ -150,3 +164,5 @@ test(" should fetching expenses from firebase", (done)=>{
         done();
     })
 })
+
+
