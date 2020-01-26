@@ -10,7 +10,6 @@ import "./styles/style.scss";
 import 'react-dates/lib/css/_datepicker.css'
 import { firebase } from "./firebase/firebase";
 
-
 const store = configureStore();
 const jsx = (
     <Provider store={store}>
@@ -36,11 +35,13 @@ firebase.auth().onAuthStateChanged((user)=>{
             renderApp();
             if(history.location.pathname === '/'){
                 history.push('/dashbord');
+                console.log('login')
             }
         });
     }else{
         store.dispatch(logout)
         renderApp();
         history.push('/');
+        console.log('logout')
     }
 })
