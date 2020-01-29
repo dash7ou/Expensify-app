@@ -5,7 +5,11 @@ import { startLogin } from "../actions/auth";
 
 export const LoginPage = ({startLogin})=>(
     <div className="login-page">
-        <button onClick={startLogin}>Login</button>
+        <div className="login-page__box">
+            <h1 className="login-page__title">Expensify App</h1>
+            <p>It's time to get your expenses under control</p>
+            <button onClick={startLogin}>Login</button>
+        </div>
     </div>
 )
 
