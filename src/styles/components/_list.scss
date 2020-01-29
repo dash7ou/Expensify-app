@@ -1,0 +1,8 @@
+.list-header{
+    background-color: #f7f7f7;
+    border: 1px solid darken(#f7f7f7, 10%);
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    padding: $s-size $m-size;
+}
