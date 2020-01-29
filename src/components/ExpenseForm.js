@@ -68,14 +68,16 @@ class ExpenseForm extends React.Component{
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <input  
-                        type="text" 
+                        type="text"
+                        className="text-input" 
                         value={this.state.description} 
-                        placeholder="description"
+                        placeholder="Description"
                         onChange={this.onDescriptionChange}
                         autoFocus
                     />
                     <input 
                         type="text"
+                        className="text-input" 
                         placeholder="Amount"
                         value={this.state.amount}
                         onChange={this.onChangeAmount}
@@ -89,7 +91,8 @@ class ExpenseForm extends React.Component{
                         isOutsideRange = {()=>false}
                     />
                     <textarea
-                        placeholder="add a note for yout expense (optional)"
+                        placeholder="Add a note for yout expense (optional)"
+                        className="text-area"
                         value = {this.state.note}
                         onChange = {this.onChangeNote}
                     ></textarea>
