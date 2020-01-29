@@ -2,9 +2,27 @@
     background-color: #1c88bf;
     border: 1px solid #1c88bf;
     border-radius: 5px;
-    padding : 1rem;
-    width: 70%;
+    padding:  $s-size;
+    width: 80%;
     font-size: 2rem;
     font-weight: bold;
-    color: #ccc
+    color: #ccc;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+    text-align: center;
+    font-size: 2.7rem;
+}
+
+.button--create{
+    width: 30%;
+}
+
+.button--link{
+    background: none;
+    border: none;
+    width: 0;
+    font-weight: 300;
+    font-size: 2rem;
+    padding: 0
 }
