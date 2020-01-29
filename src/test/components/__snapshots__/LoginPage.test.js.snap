@@ -4,8 +4,22 @@ exports[` should render login page 1`] = `
 <div
   className="login-page"
 >
-  <button>
-    Login
-  </button>
+  <div
+    className="login-page__box"
+  >
+    <h1
+      className="login-page__title"
+    >
+      Expensify App
+    </h1>
+    <p>
+      It's time to get your expenses under control
+    </p>
+    <button
+      className="button"
+    >
+      Login with google
+    </button>
+  </div>
 </div>
 `;
