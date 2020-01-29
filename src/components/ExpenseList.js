@@ -10,7 +10,15 @@ export const ExpenseList = (props)=>(
             <div className="show-for-desktop">Expense</div>
             <div className="show-for-desktop">Amount</div>
         </div>
-        {props.expenses.map(expense => <ExpenseItem key ={expense.id}  {...expense}/>)}
+        <div className="list-body">
+            {props.expenses.length === 0 ? (
+                <div className="list-items list-items--message">
+                    <span>No Expenses</span>
+                </div>
+            ): (
+                props.expenses.map(expense => <ExpenseItem key ={expense.id}  {...expense}/>)
+            )}
+        </div>
     </div>
 )
 
